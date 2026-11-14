@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Service - Home</title>
+    <link th:href="@{/css/navbar-styles.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/css/styles.css}" rel="stylesheet" type="text/css"/>
+</head>
+<body class="layout-body">
+    <!-- Navigation -->
+    <nav th:replace="~{fragments/navbar :: navbar}"></nav>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Success Message -->
+        <div th:if="${successMessage}" class="alert alert-success" th:text="${successMessage}" style="margin-bottom: 20px;"></div>
+        
+        <!-- Hero Section -->
+        <div class="hero-section">
+            <h1>Professional Email Service</h1>
+            <p>Send, receive, and manage emails with ease</p>
+            <div th:if="${!isLoggedIn}" class="cta-buttons">
+                <a th:href="@{/signup}" class="btn btn-primary">Get Started</a>
+                <a th:href="@{/login}" class="btn btn-outline">Sign In</a>
+            </div>
+            <div th:if="${isLoggedIn}" class="cta-buttons">
+                <a th:href="@{/dashboard}" class="btn btn-primary">Go to Dashboard</a>
+            </div>
+        </div>
+
+        <!-- Features Section -->
+        <div class="features-section">
+            <div class="feature-card">
+                <h3>📧 Email Management</h3>
+                <p>Comprehensive email management system with support for sending, receiving, and organizing your emails efficiently.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🔒 Secure Authentication</h3>
+                <p>Enterprise-grade security with JWT authentication, password encryption, and secure session management.</p>
+            </div>
+            <div class="feature-card">
+                <h3>👤 User Management</h3>
+                <p>Complete user profile management with password reset, account settings, and role-based access control.</p>
+            </div>
+            <div class="feature-card">
+                <h3>📊 Admin Dashboard</h3>
+                <p>Advanced administrative features for managing users, files, and system configurations.</p>
+            </div>
+            <div class="feature-card">
+                <h3>📝 Template System</h3>
+                <p>Rich email template system using Thymeleaf for professional, customizable email communications.</p>
+            </div>
+            <div class="feature-card">
+                <h3>🚀 Spring Boot 3.5</h3>
+                <p>Built on the latest Spring Boot 3.5.0 framework with modern Java 21 features and best practices.</p>
+            </div>
+        </div>
+
+        <!-- Additional Info Section -->
+        <div class="cta-section">
+            <h2 style="color: #333; margin-bottom: 15px;">Ready to Get Started?</h2>
+            <p style="color: #666; margin-bottom: 20px;">Join thousands of users who trust our email service for their communication needs.</p>
+            <div th:if="${!isLoggedIn}" class="cta-buttons">
+                <a th:href="@{/signup}" class="btn btn-primary">Create Account</a>
+                <a th:href="@{/login}" class="btn btn-outline">Sign In</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer th:replace="~{fragments/footer :: footer}"></footer>
+</body>
+</html>

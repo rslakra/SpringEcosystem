@@ -1,0 +1,41 @@
+name: SpringBoot - SpringResourceServers CI
+
+env:
+  RESOURCE_SERVERS_ROOT: SpringBoot/spring-resource-servers
+  JAVA_VERSION: "21"
+  DISTRIBUTION: "temurin"
+
+on:
+  push:
+    paths:
+      - &resource-servers-glob SpringBoot/spring-resource-servers/**
+      - ".github/workflows/spring-resource-servers-ci.yml"
+  pull_request:
+    paths:
+      - *resource-servers-glob
+      - ".github/workflows/spring-resource-servers-ci.yml"
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    name: ${{ matrix.module }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        module: [springboot-resource-server, springboot-resource-server-access]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up JDK ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v5
+        with:
+          distribution: ${{ env.DISTRIBUTION }}
+          java-version: ${{ env.JAVA_VERSION }}
+          cache: maven
+          cache-dependency-path: ${{ env.RESOURCE_SERVERS_ROOT }}/${{ matrix.module }}/pom.xml
+
+      - name: Build and run unit tests
+        working-directory: ${{ env.RESOURCE_SERVERS_ROOT }}/${{ matrix.module }}
+        run: mvn -B -ntp test

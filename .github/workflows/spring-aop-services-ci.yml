@@ -1,0 +1,45 @@
+name: SpringBoot - SpringAopServices CI
+
+env:
+  AOP_SERVICES_ROOT: SpringBoot/spring-aop-services
+  JAVA_VERSION: "21"
+  DISTRIBUTION: "temurin"
+
+on:
+  push:
+    paths:
+      - &aop-services-glob SpringBoot/spring-aop-services/**
+      - ".github/workflows/spring-aop-services-ci.yml"
+  pull_request:
+    paths:
+      - *aop-services-glob
+      - ".github/workflows/spring-aop-services-ci.yml"
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    name: ${{ matrix.module }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # spring-aop-before-advice and spring-aop-task-service are left out on purpose: they depend on
+        # com.rslakra.appsuite:appsuite-core / appsuite-spring, which are not on Maven Central and have no
+        # repository declared in their poms, so a clean runner can't resolve them (they build locally only
+        # because the artifacts are in ~/.m2). Add them once those artifacts are published.
+        module: [spring-aop-around-advice, spring-aop-service]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up JDK ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v5
+        with:
+          distribution: ${{ env.DISTRIBUTION }}
+          java-version: ${{ env.JAVA_VERSION }}
+          cache: maven
+          cache-dependency-path: ${{ env.AOP_SERVICES_ROOT }}/${{ matrix.module }}/pom.xml
+
+      - name: Build and run unit tests
+        working-directory: ${{ env.AOP_SERVICES_ROOT }}/${{ matrix.module }}
+        run: mvn -B -ntp test
