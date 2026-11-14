@@ -1,4 +1,4 @@
-# Spring Security Examples
+# Spring Ecosystem
 
 A collection of Spring Security demonstration projects showcasing various authentication and authorization mechanisms, security configurations, and best practices.
 
