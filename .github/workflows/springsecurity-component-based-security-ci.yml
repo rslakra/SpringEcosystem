@@ -8,11 +8,11 @@ on:
   push:
     paths:
       - "SpringSecurity/component-based-security/**"
-      - ".github/workflows/spring-security-component-based-security-ci.yml"
+      - ".github/workflows/springsecurity-component-based-security-ci.yml"
   pull_request:
     paths:
       - "SpringSecurity/component-based-security/**"
-      - ".github/workflows/spring-security-component-based-security-ci.yml"
+      - ".github/workflows/springsecurity-component-based-security-ci.yml"
   workflow_dispatch:
 
 defaults:

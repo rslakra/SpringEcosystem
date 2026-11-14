@@ -8,11 +8,11 @@ on:
   push:
     paths:
       - "SpringSecurity/spring-oauth-clients/**"
-      - ".github/workflows/spring-security-oauth-clients-ci.yml"
+      - ".github/workflows/springsecurity-spring-oauth-clients-ci.yml"
   pull_request:
     paths:
       - "SpringSecurity/spring-oauth-clients/**"
-      - ".github/workflows/spring-security-oauth-clients-ci.yml"
+      - ".github/workflows/springsecurity-spring-oauth-clients-ci.yml"
   workflow_dispatch:
 
 jobs:

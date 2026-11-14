@@ -62,20 +62,20 @@ Continuous integration runs in GitHub Actions. The workflows in `.github/workflo
 | `spring-resource-servers-ci.yml` | `SpringBoot/spring-resource-servers/springboot-resource-server`, `springboot-resource-server-access` |
 | `springboot-service-ci.yml` | `SpringBoot/springboot-service` |
 | `springboot-service-jsp-ci.yml` | `SpringBoot/springboot-service-jsp` |
-| `spring-security-component-based-security-ci.yml` | `SpringSecurity/component-based-security` |
-| `spring-security-enable-method-security-ci.yml` | `SpringSecurity/enable-method-security` |
-| `spring-security-filter-chain-ci.yml` | `SpringSecurity/spring-security-filter-chain` |
-| `spring-security-java-jwt-based-security-ci.yml` | `SpringSecurity/java-jwt-based-security` |
-| `spring-security-jwt-authentications-ci.yml` | `SpringSecurity/jwt-authentications/jwt-authentication1`, `3`, `4`, `5`, `7` |
-| `spring-security-oauth-clients-ci.yml` | `SpringSecurity/spring-oauth-clients/springboot-oauth-client`, `springboot-oauth2-service` |
-| `spring-security-web-login-ci.yml` | `SpringSecurity/spring-security-web-login` |
+| `springsecurity-component-based-security-ci.yml` | `SpringSecurity/component-based-security` |
+| `springsecurity-enable-method-security-ci.yml` | `SpringSecurity/enable-method-security` |
+| `springsecurity-java-jwt-based-security-ci.yml` | `SpringSecurity/java-jwt-based-security` |
+| `springsecurity-jwt-authentications-ci.yml` | `SpringSecurity/jwt-authentications/jwt-authentication1`, `3`, `4`, `5`, `7` |
+| `springsecurity-spring-oauth-clients-ci.yml` | `SpringSecurity/spring-oauth-clients/springboot-oauth-client`, `springboot-oauth2-service` |
+| `springsecurity-spring-security-filter-chain-ci.yml` | `SpringSecurity/spring-security-filter-chain` |
+| `springsecurity-spring-security-web-login-ci.yml` | `SpringSecurity/spring-security-web-login` |
 
 Each job runs `mvn -B -ntp test` on JDK 21 (Temurin). The `Spring` projects have no tests yet, so their jobs compile the code and run Checkstyle.
 
 The AppSuite-dependent projects can't be resolved on a clean runner:
 - `springboot-email-service-ci.yml` and `springboot-jwt-authentication-ci.yml` run manually only. Re-enable their `push` and `pull_request` triggers (commented out in each file) once the artifacts are published.
 - `spring-aop-services-ci.yml` leaves out `spring-aop-before-advice` and `spring-aop-task-service`.
-- `jwt-authentication6` is excluded from `spring-security-jwt-authentications-ci.yml`.
+- `jwt-authentication6` is excluded from `springsecurity-jwt-authentications-ci.yml`.
 
 ## 📁 Project Layout
 

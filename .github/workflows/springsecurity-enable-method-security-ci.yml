@@ -8,11 +8,11 @@ on:
   push:
     paths:
       - "SpringSecurity/enable-method-security/**"
-      - ".github/workflows/spring-security-enable-method-security-ci.yml"
+      - ".github/workflows/springsecurity-enable-method-security-ci.yml"
   pull_request:
     paths:
       - "SpringSecurity/enable-method-security/**"
-      - ".github/workflows/spring-security-enable-method-security-ci.yml"
+      - ".github/workflows/springsecurity-enable-method-security-ci.yml"
   workflow_dispatch:
 
 defaults:
