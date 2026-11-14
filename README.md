@@ -47,21 +47,21 @@ Build and run each module from its own folder with `./buildMaven.sh` and `./runM
 
 ### Deploy
 
-Continuous integration runs in GitHub Actions. The workflows in `.github/workflows/` trigger on pushes and pull requests that touch their folder or the workflow file itself, and can also be started manually. There is one workflow for each project folder:
+Continuous integration runs in GitHub Actions. The workflows in `.github/workflows/` trigger on pushes and pull requests that touch their folder or the workflow file itself, and can also be started manually. There is one workflow for each project folder. Each filename is the group folder in lower case (`spring-`, `springboot-` or `springsecurity-`) followed by the project folder name:
 
 | Workflow | What it builds |
 | -------- | -------------- |
-| `spring-annotation-ci.yml` | `Spring/spring-annotation` |
-| `spring-core-ci.yml` | `Spring/spring-core` |
-| `spring-java-ci.yml` | `Spring/spring-java` |
-| `spring-xml-ci.yml` | `Spring/spring-xml` |
+| `spring-spring-annotation-ci.yml` | `Spring/spring-annotation` |
+| `spring-spring-core-ci.yml` | `Spring/spring-core` |
+| `spring-spring-java-ci.yml` | `Spring/spring-java` |
+| `spring-spring-xml-ci.yml` | `Spring/spring-xml` |
 | `springboot-email-service-ci.yml` | `SpringBoot/email-service` (manual only, see below) |
-| `springboot-example-ci.yml` | `SpringBoot/springboot-example` |
 | `springboot-jwt-authentication-ci.yml` | `SpringBoot/jwt-authentication` (manual only, see below) |
-| `spring-aop-services-ci.yml` | `SpringBoot/spring-aop-services/spring-aop-around-advice`, `spring-aop-service` |
-| `spring-resource-servers-ci.yml` | `SpringBoot/spring-resource-servers/springboot-resource-server`, `springboot-resource-server-access` |
-| `springboot-service-ci.yml` | `SpringBoot/springboot-service` |
-| `springboot-service-jsp-ci.yml` | `SpringBoot/springboot-service-jsp` |
+| `springboot-spring-aop-services-ci.yml` | `SpringBoot/spring-aop-services/spring-aop-around-advice`, `spring-aop-service` |
+| `springboot-spring-resource-servers-ci.yml` | `SpringBoot/spring-resource-servers/springboot-resource-server`, `springboot-resource-server-access` |
+| `springboot-springboot-example-ci.yml` | `SpringBoot/springboot-example` |
+| `springboot-springboot-service-ci.yml` | `SpringBoot/springboot-service` |
+| `springboot-springboot-service-jsp-ci.yml` | `SpringBoot/springboot-service-jsp` |
 | `springsecurity-component-based-security-ci.yml` | `SpringSecurity/component-based-security` |
 | `springsecurity-enable-method-security-ci.yml` | `SpringSecurity/enable-method-security` |
 | `springsecurity-java-jwt-based-security-ci.yml` | `SpringSecurity/java-jwt-based-security` |
@@ -74,7 +74,7 @@ Each job runs `mvn -B -ntp test` on JDK 21 (Temurin). The `Spring` projects have
 
 The AppSuite-dependent projects can't be resolved on a clean runner:
 - `springboot-email-service-ci.yml` and `springboot-jwt-authentication-ci.yml` run manually only. Re-enable their `push` and `pull_request` triggers (commented out in each file) once the artifacts are published.
-- `spring-aop-services-ci.yml` leaves out `spring-aop-before-advice` and `spring-aop-task-service`.
+- `springboot-spring-aop-services-ci.yml` leaves out `spring-aop-before-advice` and `spring-aop-task-service`.
 - `jwt-authentication6` is excluded from `springsecurity-jwt-authentications-ci.yml`.
 
 ## 📁 Project Layout

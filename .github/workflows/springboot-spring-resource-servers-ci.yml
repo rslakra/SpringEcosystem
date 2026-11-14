@@ -9,11 +9,11 @@ on:
   push:
     paths:
       - &resource-servers-glob SpringBoot/spring-resource-servers/**
-      - ".github/workflows/spring-resource-servers-ci.yml"
+      - ".github/workflows/springboot-spring-resource-servers-ci.yml"
   pull_request:
     paths:
       - *resource-servers-glob
-      - ".github/workflows/spring-resource-servers-ci.yml"
+      - ".github/workflows/springboot-spring-resource-servers-ci.yml"
   workflow_dispatch:
 
 jobs:

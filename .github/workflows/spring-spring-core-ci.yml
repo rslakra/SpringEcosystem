@@ -1,4 +1,4 @@
-name: Spring - SpringAnnotation CI
+name: Spring - SpringCore CI
 
 env:
   JAVA_VERSION: "21"
@@ -7,17 +7,17 @@ env:
 on:
   push:
     paths:
-      - "Spring/spring-annotation/**"
-      - ".github/workflows/spring-annotation-ci.yml"
+      - "Spring/spring-core/**"
+      - ".github/workflows/spring-spring-core-ci.yml"
   pull_request:
     paths:
-      - "Spring/spring-annotation/**"
-      - ".github/workflows/spring-annotation-ci.yml"
+      - "Spring/spring-core/**"
+      - ".github/workflows/spring-spring-core-ci.yml"
   workflow_dispatch:
 
 defaults:
   run:
-    working-directory: Spring/spring-annotation
+    working-directory: Spring/spring-core
 
 jobs:
   build-and-test:
@@ -32,7 +32,7 @@ jobs:
           distribution: ${{ env.DISTRIBUTION }}
           java-version: ${{ env.JAVA_VERSION }}
           cache: maven
-          cache-dependency-path: Spring/spring-annotation/pom.xml
+          cache-dependency-path: Spring/spring-core/pom.xml
 
       # The project has no tests yet: this compiles it and runs Checkstyle (the pom runs it at
       # process-classes, with the rules downloaded from rslakra/code-styles).

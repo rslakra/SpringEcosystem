@@ -8,11 +8,11 @@ on:
   push:
     paths:
       - "Spring/spring-java/**"
-      - ".github/workflows/spring-java-ci.yml"
+      - ".github/workflows/spring-spring-java-ci.yml"
   pull_request:
     paths:
       - "Spring/spring-java/**"
-      - ".github/workflows/spring-java-ci.yml"
+      - ".github/workflows/spring-spring-java-ci.yml"
   workflow_dispatch:
 
 defaults:

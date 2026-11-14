@@ -4,11 +4,11 @@ on:
   push:
     paths:
       - "SpringBoot/springboot-service/**"
-      - ".github/workflows/springboot-service-ci.yml"
+      - ".github/workflows/springboot-springboot-service-ci.yml"
   pull_request:
     paths:
       - "SpringBoot/springboot-service/**"
-      - ".github/workflows/springboot-service-ci.yml"
+      - ".github/workflows/springboot-springboot-service-ci.yml"
   workflow_dispatch:
 
 defaults:

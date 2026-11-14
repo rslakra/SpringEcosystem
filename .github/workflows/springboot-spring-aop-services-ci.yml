@@ -9,11 +9,11 @@ on:
   push:
     paths:
       - &aop-services-glob SpringBoot/spring-aop-services/**
-      - ".github/workflows/spring-aop-services-ci.yml"
+      - ".github/workflows/springboot-spring-aop-services-ci.yml"
   pull_request:
     paths:
       - *aop-services-glob
-      - ".github/workflows/spring-aop-services-ci.yml"
+      - ".github/workflows/springboot-spring-aop-services-ci.yml"
   workflow_dispatch:
 
 jobs:
