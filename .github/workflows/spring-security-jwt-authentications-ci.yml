@@ -7,11 +7,11 @@ env:
 on:
   push:
     paths:
-      - "jwt-authentications/**"
+      - "SpringSecurity/jwt-authentications/**"
       - ".github/workflows/spring-security-jwt-authentications-ci.yml"
   pull_request:
     paths:
-      - "jwt-authentications/**"
+      - "SpringSecurity/jwt-authentications/**"
       - ".github/workflows/spring-security-jwt-authentications-ci.yml"
   workflow_dispatch:
 
@@ -23,12 +23,16 @@ jobs:
       fail-fast: false
       matrix:
         module:
-          - jwt-authentications/jwt-authentication1
-          - jwt-authentications/jwt-authentication3
-          - jwt-authentications/jwt-authentication4
-          - jwt-authentications/jwt-authentication5
-          # - jwt-authentications/jwt-authentication6
-          - jwt-authentications/jwt-authentication7
+          - SpringSecurity/jwt-authentications/jwt-authentication1
+          - SpringSecurity/jwt-authentications/jwt-authentication3
+          - SpringSecurity/jwt-authentications/jwt-authentication4
+          - SpringSecurity/jwt-authentications/jwt-authentication5
+          # Disabled on purpose: jwt-authentication6 depends on com.rslakra.appsuite:appsuite-core (0.0.74) and
+          # appsuite-spring (0.0.32). They are not on Maven Central and the pom declares no repository for them,
+          # so a clean runner can't resolve them (the tests pass locally only because they are in ~/.m2).
+          # Enable it once those artifacts are published or built in an earlier step.
+          # - SpringSecurity/jwt-authentications/jwt-authentication6
+          - SpringSecurity/jwt-authentications/jwt-authentication7
     steps:
       - name: Checkout
         uses: actions/checkout@v5

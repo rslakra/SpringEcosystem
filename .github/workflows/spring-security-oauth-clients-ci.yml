@@ -7,11 +7,11 @@ env:
 on:
   push:
     paths:
-      - "spring-oauth-clients/**"
+      - "SpringSecurity/spring-oauth-clients/**"
       - ".github/workflows/spring-security-oauth-clients-ci.yml"
   pull_request:
     paths:
-      - "spring-oauth-clients/**"
+      - "SpringSecurity/spring-oauth-clients/**"
       - ".github/workflows/spring-security-oauth-clients-ci.yml"
   workflow_dispatch:
 
@@ -23,8 +23,8 @@ jobs:
       fail-fast: false
       matrix:
         module:
-          - spring-oauth-clients/springboot-oauth-client
-          - spring-oauth-clients/springboot-oauth2-service
+          - SpringSecurity/spring-oauth-clients/springboot-oauth-client
+          - SpringSecurity/spring-oauth-clients/springboot-oauth2-service
     steps:
       - name: Checkout
         uses: actions/checkout@v5
