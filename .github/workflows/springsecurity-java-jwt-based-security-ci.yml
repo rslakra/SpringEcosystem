@@ -6,10 +6,14 @@ env:
 
 on:
   push:
+    branches:
+      - master
     paths:
       - "SpringSecurity/java-jwt-based-security/**"
       - ".github/workflows/springsecurity-java-jwt-based-security-ci.yml"
   pull_request:
+    branches:
+      - master
     paths:
       - "SpringSecurity/java-jwt-based-security/**"
       - ".github/workflows/springsecurity-java-jwt-based-security-ci.yml"

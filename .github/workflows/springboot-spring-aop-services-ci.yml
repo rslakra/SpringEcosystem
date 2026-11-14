@@ -7,10 +7,14 @@ env:
 
 on:
   push:
+    branches:
+      - master
     paths:
       - &aop-services-glob SpringBoot/spring-aop-services/**
       - ".github/workflows/springboot-spring-aop-services-ci.yml"
   pull_request:
+    branches:
+      - master
     paths:
       - *aop-services-glob
       - ".github/workflows/springboot-spring-aop-services-ci.yml"

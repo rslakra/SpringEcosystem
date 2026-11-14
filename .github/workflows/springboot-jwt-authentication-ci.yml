@@ -12,10 +12,14 @@ env:
 on:
   workflow_dispatch:
   # push:
+  #   branches:
+  #     - master
   #   paths:
   #     - "SpringBoot/jwt-authentication/**"
   #     - ".github/workflows/springboot-jwt-authentication-ci.yml"
   # pull_request:
+  #   branches:
+  #     - master
   #   paths:
   #     - "SpringBoot/jwt-authentication/**"
   #     - ".github/workflows/springboot-jwt-authentication-ci.yml"

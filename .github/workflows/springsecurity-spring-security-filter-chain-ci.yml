@@ -6,10 +6,14 @@ env:
 
 on:
   push:
+    branches:
+      - master
     paths:
       - "SpringSecurity/spring-security-filter-chain/**"
       - ".github/workflows/springsecurity-spring-security-filter-chain-ci.yml"
   pull_request:
+    branches:
+      - master
     paths:
       - "SpringSecurity/spring-security-filter-chain/**"
       - ".github/workflows/springsecurity-spring-security-filter-chain-ci.yml"

@@ -12,10 +12,14 @@ env:
 on:
   workflow_dispatch:
   # push:
+  #   branches:
+  #     - master
   #   paths:
   #     - "SpringBoot/email-service/**"
   #     - ".github/workflows/springboot-email-service-ci.yml"
   # pull_request:
+  #   branches:
+  #     - master
   #   paths:
   #     - "SpringBoot/email-service/**"
   #     - ".github/workflows/springboot-email-service-ci.yml"

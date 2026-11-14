@@ -6,10 +6,14 @@ env:
 
 on:
   push:
+    branches:
+      - master
     paths:
       - "SpringSecurity/spring-security-web-login/**"
       - ".github/workflows/springsecurity-spring-security-web-login-ci.yml"
   pull_request:
+    branches:
+      - master
     paths:
       - "SpringSecurity/spring-security-web-login/**"
       - ".github/workflows/springsecurity-spring-security-web-login-ci.yml"

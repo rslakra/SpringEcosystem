@@ -7,10 +7,14 @@ env:
 
 on:
   push:
+    branches:
+      - master
     paths:
       - &resource-servers-glob SpringBoot/spring-resource-servers/**
       - ".github/workflows/springboot-spring-resource-servers-ci.yml"
   pull_request:
+    branches:
+      - master
     paths:
       - *resource-servers-glob
       - ".github/workflows/springboot-spring-resource-servers-ci.yml"

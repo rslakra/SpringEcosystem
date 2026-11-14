@@ -2,10 +2,14 @@ name: SpringBoot - SpringbootServiceJsp CI
 
 on:
   push:
+    branches:
+      - master
     paths:
       - "SpringBoot/springboot-service-jsp/**"
       - ".github/workflows/springboot-springboot-service-jsp-ci.yml"
   pull_request:
+    branches:
+      - master
     paths:
       - "SpringBoot/springboot-service-jsp/**"
       - ".github/workflows/springboot-springboot-service-jsp-ci.yml"

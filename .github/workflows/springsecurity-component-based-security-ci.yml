@@ -6,10 +6,14 @@ env:
 
 on:
   push:
+    branches:
+      - master
     paths:
       - "SpringSecurity/component-based-security/**"
       - ".github/workflows/springsecurity-component-based-security-ci.yml"
   pull_request:
+    branches:
+      - master
     paths:
       - "SpringSecurity/component-based-security/**"
       - ".github/workflows/springsecurity-component-based-security-ci.yml"

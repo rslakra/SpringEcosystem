@@ -6,10 +6,14 @@ env:
 
 on:
   push:
+    branches:
+      - master
     paths:
       - "Spring/spring-xml/**"
       - ".github/workflows/spring-spring-xml-ci.yml"
   pull_request:
+    branches:
+      - master
     paths:
       - "Spring/spring-xml/**"
       - ".github/workflows/spring-spring-xml-ci.yml"

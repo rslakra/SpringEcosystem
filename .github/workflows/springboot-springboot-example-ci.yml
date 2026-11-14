@@ -2,10 +2,14 @@ name: SpringBoot - SpringbootExample CI
 
 on:
   push:
+    branches:
+      - master
     paths:
       - "SpringBoot/springboot-example/**"
       - ".github/workflows/springboot-springboot-example-ci.yml"
   pull_request:
+    branches:
+      - master
     paths:
       - "SpringBoot/springboot-example/**"
       - ".github/workflows/springboot-springboot-example-ci.yml"

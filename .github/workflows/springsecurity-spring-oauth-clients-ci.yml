@@ -6,10 +6,14 @@ env:
 
 on:
   push:
+    branches:
+      - master
     paths:
       - "SpringSecurity/spring-oauth-clients/**"
       - ".github/workflows/springsecurity-spring-oauth-clients-ci.yml"
   pull_request:
+    branches:
+      - master
     paths:
       - "SpringSecurity/spring-oauth-clients/**"
       - ".github/workflows/springsecurity-spring-oauth-clients-ci.yml"
