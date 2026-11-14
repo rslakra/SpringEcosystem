@@ -1,0 +1,43 @@
+name: SpringBoot - EmailService CI
+
+env:
+  JAVA_VERSION: "21"
+  DISTRIBUTION: "temurin"
+
+# Manual only for now: email-service depends on com.rslakra.appsuite:appsuite-core (0.0.74) and
+# appsuite-spring (0.0.32). They are not on Maven Central and the pom declares no repository for
+# them, so a clean runner can't resolve them (the build passes locally only because they are in
+# ~/.m2). Once they are published or built in an earlier step, replace the trigger below with the
+# commented-out push / pull_request triggers.
+on:
+  workflow_dispatch:
+  # push:
+  #   paths:
+  #     - "SpringBoot/email-service/**"
+  #     - ".github/workflows/springboot-email-service-ci.yml"
+  # pull_request:
+  #   paths:
+  #     - "SpringBoot/email-service/**"
+  #     - ".github/workflows/springboot-email-service-ci.yml"
+
+defaults:
+  run:
+    working-directory: SpringBoot/email-service
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up JDK ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v5
+        with:
+          distribution: ${{ env.DISTRIBUTION }}
+          java-version: ${{ env.JAVA_VERSION }}
+          cache: maven
+          cache-dependency-path: SpringBoot/email-service/pom.xml
+
+      - name: Build and run unit tests
+        run: mvn -B -ntp test

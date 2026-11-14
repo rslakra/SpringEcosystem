@@ -295,17 +295,17 @@ The tests run on in-memory H2 where a database is involved.
 
 ### Continuous integration
 
-There is one GitHub Actions workflow in `.github/workflows/` (at the repository root) for each folder here. Each runs `mvn -B -ntp test` on JDK 21 (Temurin):
+There is one GitHub Actions workflow in `.github/workflows/` (at the repository root) for each folder here. Their filenames start with `springsecurity-`, followed by the folder name. Each runs `mvn -B -ntp test` on JDK 21 (Temurin):
 
 | Workflow | Modules |
 | -------- | ------- |
-| `spring-security-component-based-security-ci.yml` | `component-based-security` |
-| `spring-security-enable-method-security-ci.yml` | `enable-method-security` |
-| `spring-security-filter-chain-ci.yml` | `spring-security-filter-chain` |
-| `spring-security-java-jwt-based-security-ci.yml` | `java-jwt-based-security` |
-| `spring-security-jwt-authentications-ci.yml` | `jwt-authentication1`, `3`, `4`, `5`, `7` |
-| `spring-security-oauth-clients-ci.yml` | `springboot-oauth-client`, `springboot-oauth2-service` |
-| `spring-security-web-login-ci.yml` | `spring-security-web-login` |
+| `springsecurity-component-based-security-ci.yml` | `component-based-security` |
+| `springsecurity-enable-method-security-ci.yml` | `enable-method-security` |
+| `springsecurity-java-jwt-based-security-ci.yml` | `java-jwt-based-security` |
+| `springsecurity-jwt-authentications-ci.yml` | `jwt-authentication1`, `3`, `4`, `5`, `7` |
+| `springsecurity-spring-oauth-clients-ci.yml` | `springboot-oauth-client`, `springboot-oauth2-service` |
+| `springsecurity-spring-security-filter-chain-ci.yml` | `spring-security-filter-chain` |
+| `springsecurity-spring-security-web-login-ci.yml` | `spring-security-web-login` |
 
 `jwt-authentication6` is excluded; see below.
 

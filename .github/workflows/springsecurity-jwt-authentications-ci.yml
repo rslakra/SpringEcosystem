@@ -1,0 +1,50 @@
+name: SpringSecurity - JwtAuthentications CI
+
+env:
+  JAVA_VERSION: "21"
+  DISTRIBUTION: "temurin"
+
+on:
+  push:
+    paths:
+      - "SpringSecurity/jwt-authentications/**"
+      - ".github/workflows/springsecurity-jwt-authentications-ci.yml"
+  pull_request:
+    paths:
+      - "SpringSecurity/jwt-authentications/**"
+      - ".github/workflows/springsecurity-jwt-authentications-ci.yml"
+  workflow_dispatch:
+
+jobs:
+  build-and-test:
+    name: ${{ matrix.module }}
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        module:
+          - SpringSecurity/jwt-authentications/jwt-authentication1
+          - SpringSecurity/jwt-authentications/jwt-authentication3
+          - SpringSecurity/jwt-authentications/jwt-authentication4
+          - SpringSecurity/jwt-authentications/jwt-authentication5
+          # Disabled on purpose: jwt-authentication6 depends on com.rslakra.appsuite:appsuite-core (0.0.74) and
+          # appsuite-spring (0.0.32). They are not on Maven Central and the pom declares no repository for them,
+          # so a clean runner can't resolve them (the tests pass locally only because they are in ~/.m2).
+          # Enable it once those artifacts are published or built in an earlier step.
+          # - SpringSecurity/jwt-authentications/jwt-authentication6
+          - SpringSecurity/jwt-authentications/jwt-authentication7
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up JDK ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v5
+        with:
+          distribution: ${{ env.DISTRIBUTION }}
+          java-version: ${{ env.JAVA_VERSION }}
+          cache: maven
+          cache-dependency-path: ${{ matrix.module }}/pom.xml
+
+      - name: Build and run unit tests
+        working-directory: ${{ matrix.module }}
+        run: mvn -B -ntp test
